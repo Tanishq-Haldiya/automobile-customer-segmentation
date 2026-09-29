@@ -1,0 +1,24 @@
+# Core
+pandas>=2.2
+numpy>=1.26
+scipy>=1.12
+scikit-learn>=1.5
+
+# Mixed-type clustering -- the heart of the project
+kmodes>=0.12          # K-Prototypes
+gower>=0.1.2          # Gower distance for the mixed-type silhouette and linkage
+prince>=0.21          # FAMD projection
+
+# Plotting
+matplotlib>=3.9
+seaborn>=0.13
+
+# Persistence, notebooks, tests
+joblib>=1.4
+jupyter>=1.0
+pytest>=8.0
+
+# PDF dossier
+reportlab>=4.0
+pypdf>=4.0
+pypdfium2>=4.0

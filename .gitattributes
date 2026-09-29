@@ -1,0 +1,26 @@
+# Without this file, Git on Windows (core.autocrlf=true) rewrites line endings
+# on checkout. That corrupts the PDF and changes the raw CSVs' bytes, which
+# breaks the SHA-256 checksums documented in data/raw/SHA256SUMS.txt. Verified:
+# a fresh clone produced a 659,255-byte PDF from a 658,416-byte original.
+#
+# Later rules win, so the byte-exact rules come last.
+
+# Normalise real text to LF in the index and in the working copy, on every OS.
+* text=auto eol=lf
+
+# Generated CSVs and notebooks: text, but always LF so they are stable
+# across platforms and diff cleanly.
+*.csv   text eol=lf
+*.ipynb text eol=lf
+
+# Binary: never transform, never diff as text.
+*.pdf    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.joblib binary
+*.pkl    binary
+
+# The raw data and its checksums must stay byte-identical, or SHA256SUMS.txt
+# stops verifying for anyone who clones. This must be the last word.
+data/raw/** -text
